@@ -1,14 +1,15 @@
 """
 Example of a table-driven agent, see CH2 of AIMA.
 """
-import random
+
 import time
 
 from agentpy import agents
 
 loc_A, loc_B = (0, 0), (0, 1)   # locations in a 2-D, two-room world
 
-def TableDrivenVacuum():
+
+def TableVacuumProgram():
     """table defines the percept sequence to action mapping."""
     table = {
         ((loc_A, 'Clean'),): 'Right',
@@ -22,13 +23,13 @@ def TableDrivenVacuum():
         ((loc_A, 'Dirty'), (loc_A, 'Clean'), (loc_B, 'Dirty')): 'Suck',
         ((loc_B, 'Dirty'), (loc_B, 'Clean'), (loc_A, 'Dirty')): 'Suck',
     }
-    return agents.Agent(agents.TableDrivenAgentProgram(table))
-
+    return agents.TableDrivenAgentProgram(table)
 
 
 if __name__ == '__main__':
 
-    a = agents.trace_agent(TableDrivenVacuum())
+    program = TableVacuumProgram()
+    a = agents.trace_agent(agents.Agent(program))
 
     percepts = [(loc_A, 'Clean'), (loc_A, 'Dirty'),
                 (loc_B, 'Clean'), (loc_B, 'Dirty')]
