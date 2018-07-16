@@ -1,6 +1,7 @@
 """Agents, objects, and environments."""
 
 import collections
+import random
 from abc import ABCMeta
 
 
@@ -75,7 +76,7 @@ def trace_agent(agent:'agent') -> 'agent':
     old_program = agent.program
     def new_program(percept):
         action = old_program(percept)
-        print('{} perceives <{}> and does <{}>'.format(agent, percept, action))
+        print('{} perceives {} and does {}'.format(agent, percept, action))
         return action
     agent.program = new_program
     return agent
