@@ -1,11 +1,11 @@
 """
-Example of a random agent program agent.
+Example of a random agent program.
 """
 import time
 from agentpy import agents
 
 
-def randomPilotProgram():
+def randomPilotProgram() -> 'program':
     actions = ['Descend', 'Climb', 'Turn_Left', 'Turn_Right']
     return agents.RandomAgentProgram(actions)
 

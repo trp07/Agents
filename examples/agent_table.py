@@ -9,7 +9,7 @@ from agentpy import agents
 loc_A, loc_B = (0, 0), (0, 1)   # locations in a 2-D, two-room world
 
 
-def TableVacuumProgram():
+def TableVacuumProgram() -> 'program':
     """table defines the percept sequence to action mapping."""
     table = {
         ((loc_A, 'Clean'),): 'Right',
