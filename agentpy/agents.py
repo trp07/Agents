@@ -124,7 +124,7 @@ def SimpleReflexAgentProgram(rules:list, interpret_input:'function') -> 'program
 
 
 def ModelBasedReflexAgentProgram(rules:list, update_state:'function',
-    model:dict) -> 'program':
+        model:dict) -> 'program':
     """This agent takes action based on the percept and state."""
     def program(percept):
         program.state = update_state(program.state, program.action, percept, model)
@@ -141,9 +141,9 @@ def rule_match(state:str, rules:list) -> 'rule':
     Returns a NoOp RULE if no rule found.
     """
     for rule in rules:
-        if rule.name == state:
+        if rule.state == state:
             return rule
     return RULE('default', 'NoOp')
 
 
-RULE = collections.namedtuple('rule', 'name action')
+RULE = collections.namedtuple('rule', 'state action')
